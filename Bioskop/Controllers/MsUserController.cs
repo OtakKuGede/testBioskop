@@ -1,5 +1,6 @@
 ﻿using Bioskop.IService;
 using Bioskop.Models;
+using Bioskop.Models.User;
 using Bioskop.Service;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -21,9 +22,10 @@ namespace Bioskop.Controllers
         [HttpGet]
         [Route("[Action]")]
         [Route("GetUsers")]
-        public List<MsUser> GetUser()
+        public UserResponseDto GetUser()
         {
-            return MsUserService.GetUser();
+            UserResponseDto returnData = MsUserService.GetUser();
+            return returnData;
         }
 
         [HttpPost]

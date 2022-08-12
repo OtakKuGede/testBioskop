@@ -1,5 +1,6 @@
 ﻿using Bioskop.IService;
 using Bioskop.Models;
+using Bioskop.Models.User;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,10 +17,21 @@ namespace Bioskop.Service
         }
 
 
-        public List<MsUser> GetUser()
+        public UserResponseDto GetUser()
         {
             List<MsUser> user = dbContext.MsUsers.ToList();
-            return user;
+            UserResponseDto userResponseDto = new UserResponseDto();
+            userResponseDto.total = user.Count();
+            List<UserResponse> userResponses = new List<UserResponse>();
+            foreach(MsUser u in user)
+            {
+                UserResponse userResponse = new UserResponse();
+                userResponse.name = u.Nama;
+                userResponse.email = u.Email;
+                userResponses.Add(userResponse);
+            }
+            userResponseDto.data = userResponses;
+            return userResponseDto;
         }
 
         public MsUser RegisterUser(MsUserRequestDto req , string email)

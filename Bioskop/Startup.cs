@@ -34,6 +34,7 @@ namespace Bioskop
             options.UseSqlServer(Configuration["DBConnection"]));
             services.AddControllers();
             services.AddTransient<IMsUserService, MsUserService>();
+            services.AddTransient<IMsFilmService, MsFilmService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
