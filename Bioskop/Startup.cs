@@ -35,6 +35,10 @@ namespace Bioskop
             services.AddControllers();
             services.AddTransient<IMsUserService, MsUserService>();
             services.AddTransient<IMsFilmService, MsFilmService>();
+            services.AddTransient<IMsBioskopService, MsBioskopService>();
+            services.AddTransient<IMsPenayanganService, MsPenayanganService>();
+            services.AddTransient<IMsStudioService, MsStudioService>();
+            services.AddTransient<IMsSeatService, MsSeatService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
